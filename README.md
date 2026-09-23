@@ -35,14 +35,14 @@ The `Makefile` starts with three install prefixes. `CUDA_HOME` is the HPC SDK de
 
 ```make
 CUDA_HOME    ?= /opt/nvidia/hpc_sdk/Linux_x86_64/25.3/cuda/12.8
-NCCL_HOME    ?= /path/to/nccl
+NCCL_HOME    ?= /path/to/nccl/build
 NVSHMEM_HOME ?= /path/to/libnvshmem-linux-x86_64-3.2.5_cuda12-archive
 ```
 
 They can also be overridden without touching the file:
 
 ```bash
-make NCCL_HOME=/path/to/nccl NVSHMEM_HOME=/path/to/nvshmem
+make NCCL_HOME=/path/to/nccl/build NVSHMEM_HOME=/path/to/nvshmem
 ```
 
 Then:
@@ -52,7 +52,8 @@ make                            # -> ./bin/hash_join
 cd datagen && make && cd ..     # -> ./datagen/gen_dataset
 ```
 
-`NVCXXFLAGS` targets `sm_86`; change `-gencode` in the `Makefile` for other architectures.
+`NVCXXFLAGS` targets `sm_86`; change `-gencode` in the `Makefile` for other architectures. `nvcc` and `mpic++` are taken from `PATH`, not from `CUDA_HOME`. Inside the container both are already there. If you're not using a container, make sure they resolve to the CUDA and MPI you intend to build against.
+
 
 ## Prepare datasets
 
