@@ -1,7 +1,7 @@
 # Install prefixes. Override in the environment or on the command line:
-#   make NCCL_HOME=/path/to/nccl NVSHMEM_HOME=/path/to/nvshmem
+#   make NCCL_HOME=/path/to/nccl/build NVSHMEM_HOME=/path/to/nvshmem
 CUDA_HOME    ?= /opt/nvidia/hpc_sdk/Linux_x86_64/25.3/cuda/12.8
-NCCL_HOME    ?= /path/to/nccl
+NCCL_HOME    ?= /path/to/nccl/build
 NVSHMEM_HOME ?= /path/to/libnvshmem-linux-x86_64-3.2.5_cuda12-archive
 
 CXX = mpic++
